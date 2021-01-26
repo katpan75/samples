@@ -1,0 +1,66 @@
+
+
+.container{
+    display:grid;
+    width:100vw;
+    height:100vh;
+    grid-template-rows: 1fr 1fr;
+}
+.visible {
+    grid-row-start: 2;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+.toggle.knittingone{
+    grid-area: 1 / 1;
+    background-color:darksalmon;
+}
+
+.toggle.knittingtwo{
+    grid-area: 1 / 2;
+    background-color: darkseagreen;
+}
+
+.toggle.weavingone{
+    grid-area: 2 / 1;
+    background-color: darkslateblue;
+}
+
+.toggle.dobbyweaving{
+    grid-area: 2 / 2;
+    background-color: darkviolet;
+}
+
+.toggle{
+    border-color:cornflowerblue;
+    border-style:solid;
+    border-width:2px;
+    opacity:50%;
+    transition-property: opacity;
+    transition-duration: 500ms;
+    display:block;
+}
+
+.toggle.dobbyweaving:hover, .toggle.knittingone:hover, .toggle.knittingtwo:hover,
+.toggle.weavingone:hover{
+    opacity:100%;
+}
+
+.invisible{
+    grid-row-start: 1;
+    background-color: dimgray;
+}
+
+
+#togglerknittingone:checked + .container .invisible{
+    display:none;
+
+}
+
+#togglerknittingone:checked + .container .visible{
+
+    
+}
