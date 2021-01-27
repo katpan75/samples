@@ -1,47 +1,115 @@
 
+.words{
+    text-decoration: overline;
+    display:block;
+    font-family: industry-inc-base, sans-serif;
+    font-weight: 400;
+    font-style: normal; 
+    font-size: 40px;   
+    flex-shrink: 5;
+    align-self: center;}
 
+.wordstop{
+    text-decoration: overline;
+    font-family: industry-inc-base, sans-serif;
+    font-weight: 400;
+    font-style: normal; 
+    font-size: 40px;   
+}
+.top{
+    text-decoration: overline;
+    font-family: industry-inc-base, sans-serif;
+    font-weight: 200;
+    font-style: normal; 
+    font-size: 10px;  
+    text-align:center;
+}
+
+.bottom{
+    text-decoration: underline;
+    font-family: industry-inc-base, sans-serif;
+    font-weight: 200;
+    font-style: normal; 
+    font-size: 10px;  
+    text-align:center;
+}
+    
+.toggle.dobbyweaving .words{
+    margin-left: 200px;
+}
+
+img{
+    margin-top:-20vh;
+    max-width: 100%;
+    max-height:100%;
+    display:block;
+}
+
+.scroll.dobbyweaving img{
+    margin-top:0px;
+}
+
+.handle{
+    width: 130px;
+    height: 70px;
+    background: black;
+    flex-shrink: 5;
+}
+
+.toggle.weavingone .handle{
+    align-self: flex-end;
+}
+
+.toggle.dobbyweaving .handle{
+    align-self: flex-end;
+}
 .container{
     display:grid;
     width:100vw;
     height:100vh;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 0fr 1fr 0fr;
+    grid-template-rows:0fr 1fr 0fr;
 }
 .visible {
-    grid-row-start: 2;
+    grid-area: 2 / 2;
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-
 }
 
 .toggle.knittingone{
     grid-area: 1 / 1;
-    background-color:darksalmon;
+    
 }
 
 .toggle.knittingtwo{
     grid-area: 1 / 2;
-    background-color: darkseagreen;
+    justify-content: center; 
 }
 
 .toggle.weavingone{
     grid-area: 2 / 1;
-    background-color: darkslateblue;
+    justify-content: center; 
 }
 
 .toggle.dobbyweaving{
     grid-area: 2 / 2;
-    background-color: darkviolet;
+    flex-direction: column-reverse;
+}
+
+.toggle.dobbyweaving .words{
+    align-self: flex-start;
 }
 
 .toggle{
-    border-color:cornflowerblue;
+    overflow: scroll;
+    border-color:black;
     border-style:solid;
-    border-width:2px;
+    border-width:30px;
     opacity:50%;
     transition-property: opacity;
     transition-duration: 500ms;
-    display:block;
+    display:flex;
 }
 
 .toggle.dobbyweaving:hover, .toggle.knittingone:hover, .toggle.knittingtwo:hover,
@@ -49,18 +117,67 @@
     opacity:100%;
 }
 
-.invisible{
-    grid-row-start: 1;
-    background-color: dimgray;
-}
-
-
-#togglerknittingone:checked + .container .invisible{
-    display:none;
+.invisibleknittingone{
+    grid-area: 2 / 1;
+    overflow:scroll;
 
 }
 
-#togglerknittingone:checked + .container .visible{
+.invisibleknittingtwo{
+    grid-area: 1 / 2;
+    overflow:scroll;
 
-    
 }
+
+.invisibleweavingone{
+    grid-area: 3 / 2;
+    overflow:scroll;
+}
+
+.invisibledobbyweaving{
+    grid-area: 2 / 3;
+    overflow:scroll;
+}
+
+#togglerknittingone, #togglerknittingtwo, #togglerweavingone,
+#togglerdobbyweaving{ display:none; }
+
+
+#togglerknittingone:checked ~ .container {
+    grid-template-columns: 1fr 1fr 0fr;
+    grid-template-rows:0fr 1fr 0fr;
+  
+}
+
+#togglerknittingtwo:checked ~ .container{
+    grid-template-rows: 2fr 1fr 0fr;
+    grid-template-columns: 0fr 1fr 0fr;
+}
+
+#togglerweavingone:checked ~ .container{
+    grid-template-rows:0fr 1fr 2fr;
+    grid-template-columns: 0fr 1fr 0fr;
+}
+
+#togglerdobbyweaving:checked ~ .container{
+    grid-template-columns: 0fr 1fr 1fr;
+    grid-template-rows:0fr 1fr 0fr;
+}
+
+#togglerknittingone:checked ~ .container .visible .toggle.knittingone{
+    opacity:100%;
+}
+#togglerknittingtwo:checked ~ .container .visible .toggle.knittingtwo{
+    opacity:100%;
+}
+#togglerweavingone:checked ~ .container .visible .toggle.weavingone{
+    opacity:100%;
+}
+#togglerdobbyweaving:checked ~ .container .visible .toggle.dobbyweaving{
+    opacity:100%;
+}
+
+
+
+
+
